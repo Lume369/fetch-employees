@@ -5,7 +5,7 @@ import axios from 'axios';
 
 
 function App() {
-  const [employee, setEmployee] = useState([]);
+  const [employee, setEmployee] = useState();
   const getEmployee = () => {
     axios
       .get('https://simpsons-quotes-api.herokuapp.com/quotes')
@@ -17,8 +17,8 @@ function App() {
 
   return (
     <div className="App">
-      <DisplayEmployee employee={employee} />
-      <button type="button" onClick={getEmployee}>Change</button>
+      {employee && <DisplayEmployee employee={employee} />}
+      <button type="button" onClick={getEmployee}>Get Quote</button>
 
     </div>
   );
